@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class DecisionTreeNode {
-	private DataFrame m_data;
+	private transient DataFrame m_data;
 	private double m_threshold;
 	private int m_decisionFeature;
 	private DecisionTreeNode m_leftChild;
@@ -55,7 +55,7 @@ public class DecisionTreeNode {
 				
 				// Update count
 				Integer count = countPart1.get(currentLabel);
-				countPart1.put(currentLabel, count == null? 0: count+1);
+				countPart1.put(currentLabel, count == null? 1: count+1);
 				countPart2.put(currentLabel, countPart2.get(currentLabel) - 1);
 				
 				if (currentFeature != nextFeature){
